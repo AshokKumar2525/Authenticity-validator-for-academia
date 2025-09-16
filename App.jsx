@@ -1,39 +1,24 @@
-import React, { useState, useCallback } from 'react';
-import { UserRole } from './types.js';
-import Login from './components/Login.jsx';
-import UniversityDashboard from './pages/UniversityDashboard.jsx';
-import EmployerDashboard from './pages/EmployerDashboard.jsx';
-import GovernmentDashboard from './pages/GovernmentDashboard.jsx';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Login from "./components/Login.jsx"
+import Register from "./components/Register.jsx"
+import Home from "./pages/Home.jsx"
+import EmployerDashboard from "./pages/EmployerDashboard.jsx"
+import UniversityDashboard from "./pages/UniversityDashboard.jsx"
+import GovernmentDashboard from "./pages/GovernmentDashboard.jsx"
+import React from "react"
+import './components/credentials.css'
 
-const App = () => {
-  const [userRole, setUserRole] = useState(null);
-
-  const handleLogin = useCallback((role) => {
-    setUserRole(role);
-  }, []);
-  
-  const handleLogout = useCallback(() => {
-    setUserRole(null);
-  }, []);
-
-  const renderDashboard = () => {
-    switch (userRole) {
-      case UserRole.University:
-        return <UniversityDashboard onLogout={handleLogout} />;
-      case UserRole.Employer:
-        return <EmployerDashboard onLogout={handleLogout} />;
-      case UserRole.Government:
-        return <GovernmentDashboard onLogout={handleLogout} />;
-      default:
-        return <Login onLogin={handleLogin} />;
-    }
-  };
-
+export default function App() {
   return (
-    <div className="min-h-screen text-gray-800 dark:text-gray-200 transition-colors duration-300">
-      {renderDashboard()}
-    </div>
-  );
-};
-
-export default App;
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/employer/dashboard" element={<EmployerDashboard />} />
+        <Route path="/university/dashboard" element={<UniversityDashboard />} />
+        <Route path="/government/dashboard" element={<GovernmentDashboard />} />
+      </Routes>
+    </Router>
+  )
+}
