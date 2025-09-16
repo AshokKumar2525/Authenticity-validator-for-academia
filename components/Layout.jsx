@@ -1,12 +1,29 @@
 import React from 'react';
 import { LogoutIcon } from './icons/ActionIcons.jsx';
-
+import { useNavigate } from 'react-router-dom'
 const getRoleName = (role) => {
     if (!role) return '';
     return role.charAt(0).toUpperCase() + role.slice(1);
 }
 
-const Layout = ({ userRole, onLogout, children }) => {
+const Layout = ({ userRole, children }) => {
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/logout', {
+        method:'POST',
+        credentials:'include'
+      })
+      if (response.status === 200) {
+        navigate('/')
+        return;
+      } else {
+        alert('Logout failed. Please try again.')
+      }
+    } catch (err) {
+      console.error('Error during logout:', err)
+    }
+  }
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
       <div className="flex flex-col flex-1">
@@ -19,7 +36,7 @@ const Layout = ({ userRole, onLogout, children }) => {
             </div>
             <div className="flex items-center">
               <button
-                onClick={onLogout}
+                onClick={handleLogout}
                 className="flex items-center text-gray-600 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors"
               >
                 <LogoutIcon />
