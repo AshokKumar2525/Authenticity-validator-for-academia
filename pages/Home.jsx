@@ -6,7 +6,7 @@ function Home() {
     const navigate = useNavigate()
   const handleGetStarted = async () => {
     try {
-        const response = await fetch('http://localhost:5000/dashboard', {
+        const response = await fetch('https://authenticity-validator-for-academia-1.onrender.com/dashboard', {
             method:'GET',
             credentials:'include'
         })
