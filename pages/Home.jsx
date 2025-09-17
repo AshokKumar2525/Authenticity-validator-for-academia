@@ -1,6 +1,6 @@
 // src/components/Home.jsx
 import React from 'react';
-import './Home.css'; // We'll create this CSS file next
+import './home.css'; // We'll create this CSS file next
 import { useNavigate } from 'react-router-dom'
 function Home() {
     const navigate = useNavigate()
