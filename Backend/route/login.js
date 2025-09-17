@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
         res.cookie('accessToken', accessToken, {
             httpOnly:true,
             sameSite:"strict",
-            secure: process.env.NODE_ENV === 'development',
+            secure: process.env.NODE_ENV === 'production',
             maxAge: 3600000 // 1 hour
         })
         res.status(201).json({message: 'Login successful', userType: user.userType})
