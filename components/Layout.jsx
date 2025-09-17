@@ -10,7 +10,7 @@ const Layout = ({ userRole, children }) => {
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:5000/logout', {
+      const response = await fetch('https://authenticity-validator-for-academia-1.onrender.com/logout', {
         method:'POST',
         credentials:'include'
       })

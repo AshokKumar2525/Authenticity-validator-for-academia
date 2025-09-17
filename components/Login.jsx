@@ -6,7 +6,7 @@ export default function Login() {
         event.preventDefault()
         const formData = new FormData(event.currentTarget)
         try {
-            const response = await fetch('http://localhost:5000/login', {
+            const response = await fetch('https://authenticity-validator-for-academia-1.onrender.com/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

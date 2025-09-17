@@ -7,7 +7,7 @@ export default function Register() {
         event.preventDefault()
         const formData = new FormData(event.currentTarget)
         try {
-            const response = await fetch('http://localhost:5000/register', {
+            const response = await fetch('https://authenticity-validator-for-academia-1.onrender.com/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
