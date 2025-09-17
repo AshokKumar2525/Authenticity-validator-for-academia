@@ -11,7 +11,7 @@ connectDB()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: "http://localhost:5173",  // frontend URL
+    origin: "https://authenticity-validator-for-academia-e7po.onrender.com",  // frontend URL
     credentials: true                 // allow cookies
 }))
 
